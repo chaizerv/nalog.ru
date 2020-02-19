@@ -13,7 +13,7 @@ r = s.get("https://egrul.nalog.ru/index.html",
 req = requests.Request(
     'POST',
     'https://egrul.nalog.ru/',
-    data='vyp3CaptchaToken=&page=&query='+ str(inn) + '&region=&PreventChromeAutocomplete=', # хабр почему то заменяет rеg в слове rеgion (буква е заменена на русскую) на знак ®, магия
+    data='vyp3CaptchaToken=&page=&query='+ str(inn) + '&region=&PreventChromeAutocomplete=',
     headers = {
     "Host": "egrul.nalog.ru",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0",
@@ -54,7 +54,7 @@ except Exception:
 try:
     item = (jsn["rows"])[0]
     if str(item['tot']) != '0':
-        if len(item['n']) < 50: name = str(item['n'])
+        if len(item['n']) < 40: name = str(item['n'])
         else: name = str(item['i'])
 
         name = name.replace('"',"'").replace('\\','⧵').replace('/','⁄').replace('|','¦').replace(':',';').replace('*','✱').replace('?','').replace('<','«').replace('>','»')
